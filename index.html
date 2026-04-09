@@ -299,8 +299,16 @@
                 gap: 1rem;
             }
             .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                width: 100%;
+                gap: 0.5rem;
+            }
+            .nav-buttons .btn {
+                padding: 0.5rem 0.5rem;
+                font-size: 0.75rem;
+                flex: 1;
+                text-align: center;
             }
         }
     </style>
@@ -327,7 +335,7 @@
         <section class="menu-section">
             <div class="grid">
                 <!-- Plato 1 -->
-                <div class="card" onclick="openDishModal('Calderito Montañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp')">
+                <div class="card" onclick="openDishModal('Calderito Montañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp', 'Carne en polvo, chorizo santarrosano, frijol, aguacate, maduritos, arepa y arroz.')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp" alt="Calderito Montañero">
                         <div class="price-tag">$22.900</div>
@@ -351,7 +359,7 @@
                 </div>
 
                 <!-- Plato 3 -->
-                <div class="card" onclick="openDishModal('Calderito Cumpleañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp')">
+                <div class="card" onclick="openDishModal('Calderito Cumpleañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp', 'Arroz con pollo acompañado de huevos de codorniz, salchicha ranchera crujiente y papa a la francesa.')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp" alt="Calderito Cumpleañero">
                         <div class="price-tag">$22.900</div>
@@ -363,19 +371,19 @@
                 </div>
 
                 <!-- Plato 4 -->
-                <div class="card" onclick="openDishModal('Calderito Saludable', 'https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp')">
+                <div class="card" onclick="openDishModal('Pollo saludable', 'https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp', 'Pechuga rellena de queso y espinaca sobre una base de lechuga, crutones, queso parmesano, queso fresco, tomate cherry.')">
                     <div class="card-img">
-                        <img src="https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp" alt="Calderito Saludable">
+                        <img src="https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp" alt="Pollo saludable">
                         <div class="price-tag">$22.900</div>
                     </div>
                     <div class="card-content">
-                        <h3>Saludable</h3>
+                        <h3>Pollo saludable</h3>
                         <button class="btn btn-primary btn-order">Ver Detalles</button>
                     </div>
                 </div>
 
                 <!-- Plato 5 -->
-                <div class="card" onclick="openDishModal('Calderito Valluno', 'https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp')">
+                <div class="card" onclick="openDishModal('Calderito Valluno', 'https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp', 'Chuleta Valluna con salsa de lomo de cerdo, ajo, maduritos, papa a la francesa y arroz.')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp" alt="Calderito Valluno">
                         <div class="price-tag">$22.900</div>
@@ -403,8 +411,9 @@
             <button class="close-modal" onclick="closeModal('dishModal')"><i class="fas fa-times"></i></button>
             <img src="" alt="Plato" class="modal-img" id="modalDishImg">
             <h2 id="modalDishTitle" style="margin-bottom: 10px;">Nombre del Plato</h2>
+            <p id="modalDishIngredients" style="font-size: 0.95rem; font-style: italic; background: linear-gradient(135deg, var(--primary-orange), var(--primary-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 15px;"></p>
             <p style="color: var(--primary-red); font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;">$22.900</p>
-            <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</button>
+            <button class="btn btn-primary" id="btnDishWhatsApp" style="width: 100%; padding: 1rem; font-size: 1.1rem;"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</button>
         </div>
     </div>
 
@@ -423,8 +432,9 @@
             <button class="close-modal" onclick="closeModal('visitModal')"><i class="fas fa-times"></i></button>
             <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 15px;"></i>
             <h2>Nuestra Ubicación</h2>
+            <p style="margin: 15px 0; font-weight: 600;">Calle 45 #6-58 Local 15 Bogotá</p>
             <p style="margin: 15px 0;">Visítanos y vive la experiencia Calderitos en persona. Estamos listos para atenderte con los mejores sabores.</p>
-            <button class="btn btn-outline" onclick="closeModal('visitModal')" style="width: 100%;">Abrir en Maps</button>
+            <button class="btn btn-outline" onclick="window.open('https://maps.apple.com/place?address=Avenida%20Calle%2045%208-86,%20Bogot%C3%A1,%20Bogot%C3%A1,%20Colombia&coordinate=4.632300,-74.065700&name=Avenida%20Calle%2045%208-86&map=explore', '_blank')" style="width: 100%;">Abrir en Maps</button>
         </div>
     </div>
 
@@ -434,7 +444,7 @@
             <i class="fas fa-motorcycle" style="font-size: 3rem; color: var(--primary-orange); margin-bottom: 15px;"></i>
             <h2>Pide tu Calderito</h2>
             <p style="margin: 15px 0;">¡Llevamos el sabor hasta la puerta de tu casa u oficina!</p>
-            <button class="btn btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Iniciar Pedido</button>
+            <button class="btn btn-primary" onclick="window.open('https://wa.me/573156741099?text=' + encodeURIComponent('¡Hola! Me gustaría hacer un pedido.'), '_blank')" style="width: 100%;"><i class="fab fa-whatsapp"></i> Iniciar Pedido</button>
         </div>
     </div>
 
@@ -450,9 +460,22 @@
         }
 
         // Función específica para el modal de los platos (carga datos dinámicos)
-        function openDishModal(title, imgSrc) {
+        function openDishModal(title, imgSrc, ingredients) {
             document.getElementById('modalDishTitle').textContent = title;
             document.getElementById('modalDishImg').src = imgSrc;
+
+            const ingredientsEl = document.getElementById('modalDishIngredients');
+            if (ingredients) {
+                ingredientsEl.textContent = ingredients;
+                ingredientsEl.style.display = 'block';
+            } else {
+                ingredientsEl.style.display = 'none';
+            }
+
+            const whatsappBtn = document.getElementById('btnDishWhatsApp');
+            const message = encodeURIComponent(`¡Hola! Me gustaría pedir un ${title}.`);
+            whatsappBtn.onclick = () => window.open(`https://wa.me/573156741099?text=${message}`, '_blank');
+
             openModal('dishModal');
         }
 
