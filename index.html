@@ -292,6 +292,71 @@
             margin-bottom: 1.5rem;
         }
 
+        /* --- Ingredientes Animados --- */
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 15px 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .ingredient-item {
+            background: rgba(255, 94, 0, 0.1);
+            color: var(--primary-orange);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: slideUpFade 0.5s forwards ease-out;
+            position: relative;
+        }
+
+        .ingredient-item::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E62020' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0s3-1.5 4.5 0s3 1.5 4.5 0l-3-3m3 3l-3 3'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .ingredient-item:nth-child(even) {
+            background: rgba(230, 32, 32, 0.1);
+            color: var(--primary-red);
+        }
+
+        .ingredient-item:nth-child(even)::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF5E00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0s3-1.5 4.5 0s3 1.5 4.5 0l-3-3m3 3l-3 3'/%3E%3C/svg%3E");
+        }
+
+        @keyframes slideUpFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Animaciones de Scroll --- */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Media Queries */
         @media (max-width: 768px) {
             header {
@@ -319,7 +384,7 @@
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero scroll-animate">
             <h1>El Sabor Que Te Enamora</h1>
             <p>Descubre nuestra selección premium de calderitos. Una experiencia gastronómica única servida directamente a tu mesa.</p>
         </section>
@@ -327,7 +392,7 @@
         <section class="menu-section">
             <div class="grid">
                 <!-- Plato 1 -->
-                <div class="card" onclick="openDishModal('Calderito Montañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp')">
+                <div class="card scroll-animate" onclick="openDishModal('Calderito Montañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/MONTANERO-scaled.webp" alt="Calderito Montañero">
                         <div class="price-tag">$22.900</div>
@@ -339,7 +404,7 @@
                 </div>
 
                 <!-- Plato 2 -->
-                <div class="card" onclick="openDishModal('Calderito Azteca', 'https://mercacol.com.co/wp-content/uploads/2026/04/AZTECA-1-scaled.webp')">
+                <div class="card scroll-animate" onclick="openDishModal('Calderito Azteca', 'https://mercacol.com.co/wp-content/uploads/2026/04/AZTECA-1-scaled.webp')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/AZTECA-1-scaled.webp" alt="Calderito Azteca">
                         <div class="price-tag">$22.900</div>
@@ -351,7 +416,7 @@
                 </div>
 
                 <!-- Plato 3 -->
-                <div class="card" onclick="openDishModal('Calderito Cumpleañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp')">
+                <div class="card scroll-animate" onclick="openDishModal('Calderito Cumpleañero', 'https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/CUMPLEANERO-scaled.webp" alt="Calderito Cumpleañero">
                         <div class="price-tag">$22.900</div>
@@ -363,19 +428,19 @@
                 </div>
 
                 <!-- Plato 4 -->
-                <div class="card" onclick="openDishModal('Calderito Saludable', 'https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp')">
+                <div class="card scroll-animate" onclick="openDishModal('Calderito Pollo Saludable', 'https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp')">
                     <div class="card-img">
-                        <img src="https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp" alt="Calderito Saludable">
+                        <img src="https://mercacol.com.co/wp-content/uploads/2026/04/SALUDABLE-scaled.webp" alt="Calderito Pollo Saludable">
                         <div class="price-tag">$22.900</div>
                     </div>
                     <div class="card-content">
-                        <h3>Saludable</h3>
+                        <h3>Pollo Saludable</h3>
                         <button class="btn btn-primary btn-order">Ver Detalles</button>
                     </div>
                 </div>
 
                 <!-- Plato 5 -->
-                <div class="card" onclick="openDishModal('Calderito Valluno', 'https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp')">
+                <div class="card scroll-animate" onclick="openDishModal('Calderito Valluno', 'https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp')">
                     <div class="card-img">
                         <img src="https://mercacol.com.co/wp-content/uploads/2026/04/VALLUNO-scaled.webp" alt="Calderito Valluno">
                         <div class="price-tag">$22.900</div>
@@ -403,8 +468,9 @@
             <button class="close-modal" onclick="closeModal('dishModal')"><i class="fas fa-times"></i></button>
             <img src="" alt="Plato" class="modal-img" id="modalDishImg">
             <h2 id="modalDishTitle" style="margin-bottom: 10px;">Nombre del Plato</h2>
-            <p style="color: var(--primary-red); font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;">$22.900</p>
-            <button class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</button>
+            <ul id="modalDishIngredients" class="ingredients-list"></ul>
+            <p style="color: var(--primary-red); font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; margin-top: 15px;">$22.900</p>
+            <a href="#" id="modalWhatsAppBtn" target="_blank" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; display: inline-block; text-decoration: none; box-sizing: border-box;"><i class="fab fa-whatsapp"></i> Pedir por WhatsApp</a>
         </div>
     </div>
 
@@ -423,8 +489,8 @@
             <button class="close-modal" onclick="closeModal('visitModal')"><i class="fas fa-times"></i></button>
             <i class="fas fa-map-marker-alt" style="font-size: 3rem; color: var(--primary-red); margin-bottom: 15px;"></i>
             <h2>Nuestra Ubicación</h2>
-            <p style="margin: 15px 0;">Visítanos y vive la experiencia Calderitos en persona. Estamos listos para atenderte con los mejores sabores.</p>
-            <button class="btn btn-outline" onclick="closeModal('visitModal')" style="width: 100%;">Abrir en Maps</button>
+            <p style="margin: 15px 0;">Calle 45 #6-58 Local 15 Bogotá</p>
+            <a href="https://maps.apple.com/place?address=Avenida%20Calle%2045%208-86,%20Bogot%C3%A1,%20Bogot%C3%A1,%20Colombia&coordinate=4.632300,-74.065700&name=Avenida%20Calle%2045%208-86&map=explore" target="_blank" class="btn btn-outline" style="width: 100%; display: inline-block; text-decoration: none; box-sizing: border-box;">Abrir en Maps</a>
         </div>
     </div>
 
@@ -434,7 +500,7 @@
             <i class="fas fa-motorcycle" style="font-size: 3rem; color: var(--primary-orange); margin-bottom: 15px;"></i>
             <h2>Pide tu Calderito</h2>
             <p style="margin: 15px 0;">¡Llevamos el sabor hasta la puerta de tu casa u oficina!</p>
-            <button class="btn btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Iniciar Pedido</button>
+            <a href="https://wa.me/573156741099?text=Hola,%20quisiera%20hacer%20un%20pedido%20de%20un%20calderito." target="_blank" class="btn btn-primary" style="width: 100%; display: inline-block; text-decoration: none; box-sizing: border-box;"><i class="fab fa-whatsapp"></i> Iniciar Pedido</a>
         </div>
     </div>
 
@@ -449,10 +515,36 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
+        // Diccionario de ingredientes por plato
+        const dishIngredients = {
+            'Calderito Valluno': ['Chuleta Valluna', 'Salsa de lomo de cerdo al ajo', 'Maduritos', 'Papa a la francesa', 'Arroz'],
+            'Calderito Cumpleañero': ['Arroz con pollo', 'Huevos de codorniz', 'Salchicha ranchera crujiente', 'Papa a la francesa'],
+            'Calderito Montañero': ['Carne en polvo', 'Chorizo santarrosano', 'Frijol', 'Aguacate', 'Maduritos', 'Arepa', 'Arroz'],
+            'Calderito Pollo Saludable': ['Pechuga rellena de queso y espinaca', 'Base de lechuga', 'Crutones', 'Queso parmesano', 'Queso fresco', 'Tomate cherry']
+        };
+
         // Función específica para el modal de los platos (carga datos dinámicos)
         function openDishModal(title, imgSrc) {
             document.getElementById('modalDishTitle').textContent = title;
             document.getElementById('modalDishImg').src = imgSrc;
+
+            const waPhone = '573156741099';
+            const waMessage = encodeURIComponent(`Hola, quisiera pedir el plato: ${title}`);
+            document.getElementById('modalWhatsAppBtn').href = `https://wa.me/${waPhone}?text=${waMessage}`;
+
+            // Cargar ingredientes con animación
+            const ingredientsList = document.getElementById('modalDishIngredients');
+            ingredientsList.innerHTML = ''; // Limpiar lista anterior
+
+            const ingredients = dishIngredients[title] || [];
+            ingredients.forEach((ingredient, index) => {
+                const li = document.createElement('li');
+                li.className = 'ingredient-item';
+                li.textContent = ingredient;
+                li.style.animationDelay = `${index * 0.1}s`; // Stagger animation
+                ingredientsList.appendChild(li);
+            });
+
             openModal('dishModal');
         }
 
@@ -462,6 +554,31 @@
                 event.target.classList.remove('active');
             }
         }
+
+        // --- Animación al hacer Scroll ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.scroll-animate');
+            elementsToAnimate.forEach((el, index) => {
+                // Add a small delay based on index for stagger effect if they appear together
+                el.style.transitionDelay = `${(index % 3) * 0.15}s`;
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
